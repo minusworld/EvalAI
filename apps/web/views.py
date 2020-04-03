@@ -55,10 +55,12 @@ def notify_users_about_challenge(request):
                 "email", flat=True
             )
             subject = request.POST.get("subject")
+            # request-data-injection.xss-email.001.source
             body_html = request.POST.get("body")
 
             sender = settings.CLOUDCV_TEAM_EMAIL
 
+            # request-data-injection.xss-email.001.sink
             email = EmailMessage(
                 subject,
                 body_html,
